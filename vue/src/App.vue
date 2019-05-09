@@ -1,9 +1,13 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
-    <router-view name='main'/>
-    <router-view name='bottom'/>
-    <router-link to="/hi">hi</router-link>
+    <router-view name='a'></router-view>
+    <router-view name='b'></router-view>
+    <router-view name='c'></router-view>
+    <router-view></router-view>
+    <router-link to="/hi">hi页面</router-link>
+    <router-link to="/hww">hww页面</router-link>
+    <router-link to="/zujian">zujian页面</router-link>
   </div>
 </template>
 
