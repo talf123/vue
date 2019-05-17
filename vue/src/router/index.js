@@ -4,7 +4,8 @@ import HelloWorld from '@/components/HelloWorld'
 import hi from '@/components/hi'
 import Error from '@/components/Error'
 import hww from '@/components/hww'
-import zujian from '@/components/zujian'
+import zujian1 from '@/components/zujian/zujian1'
+import zujian2 from '@/components/zujian/zujian2'
 
 Vue.use(Router)
 export default new Router({
@@ -37,7 +38,10 @@ export default new Router({
     {
       path: '/zujian',
       name: 'zujian',
-      component: zujian
+      components: {
+        a: zujian1,
+        b: zujian2
+      }
     }
   ]
 })

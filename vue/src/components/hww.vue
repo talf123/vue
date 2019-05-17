@@ -1,32 +1,47 @@
 <template>
 <div class="hello">
 <div>
-<template v-if="loginType === 'username'">
-  <label>Username</label>
-  <input placeholder="Enter your username">
-</template>
-<template v-else>
-  <label>Email</label>
-  <input placeholder="Enter your email address">
-</template>
-<button v-on:click='toggleLoginType'>Toggle login type</button>
+  <p>{{message}}</p>
+  <button v-on:click='reverMessage'>逆转消息</button>
 </div>
 <div>
-<template v-if="login === 'xing ming'">
-  <label>xing ming</label>
-  <input placeholder="key元素 点击按钮页面恢复" key='xing ming-input'>
+  <p>{{message1}}</p>
+  <input v-model='message1'>
+</div>
+<div>
+  <p>{{foo}}</p>
+  <button @click="foo='修改后!'">修改</button>
+  <button v-on:click="foo='初始值!'">还原</button>
+</div>
+<div>
+<input type='text' v-model='first'>
+<button @click='dom'>vue DOM </button>
+<button v-on:click='dom1'>利用DOM 修改值</button>
+</div>
+<div>
+<p v-once>这里不会变：{{msg}}</p>
+<p>这里的会变：{{msg}}</p>
+<button @click='change'>v-once 属性</button>
+</div>
+<div>
+<p>这里是利用双大括号显示的内容，直接显示为文本内容：{{rawhtml}}</p>
+<p>这里是利用v-html显示的内容，可以显示HTML代码：<span v-html="rawhtml"></span></p>
+</div>
+<div>
+<template v-if="loginType === 'username'">
+<label>Username:</label>
+<input placeholder="输入用户名" key="username_input">
 </template>
 <template v-else>
-  <label>you jian</label>
-  <input placeholder="key元素 点击按钮页面恢复" key='you jian-input'>
+<label>Email:</label>
+<input placeholder="输入邮箱" key="email_input">
 </template>
-<button v-on:click='toggle'>Toggle login type</button>
+<button @click='toggle'>Toggle</button>
 </div>
-<ul>
-  <li v-for='(item, index) in items' :key='item.id'>
-    {{index}}-{{item.message}}
-  </li>
-</ul>
+<div>
+<p>{{message}}</p>
+<p>{{reversedMessage}}</p>
+</div>
 </div>
 </template>
 <script>
@@ -34,24 +49,43 @@ export default{
   name: 'hww',
   data () {
     return {
-      aa: 'Username',
-      bb: 'Email',
-      loginType: 'username',
-      login: 'xing ming',
-      items: [
-        {message: 'foo'},
-        {message: 'bar'}
-      ]
+      message: '你好 vue.js!',
+      message1: '你好 vue.js!',
+      foo: '初始值!',
+      first: 'vue 连接数据',
+      a: 1,
+      msg: 'v-once指令，只能执行一次性的插值，以后内容更新后插值处的内容不会更新。',
+      rawhtml: "<span style='color:green'>v-html 可以让页面显示html代码",
+      loginType: ''
     }
   },
   methods: {
-    toggleLoginType: function () {
-      this.loginType = this.loginType === 'username' ? 'email' : 'username'
-      return this.loginType
+    reverMessage: function () {
+      this.message = this.message.split('').reverse().join('')
+    },
+    dom: function () {
+      console.log(this.first)
+    },
+    dom1: function () {
+      this.first = 'VUE DOM'
+    },
+    created: function () {
+      console.log('a is: ' + this.a)
+    },
+    change: function () {
+      this.msg = '插值的内容更新了!'
     },
     toggle: function () {
-      this.login = this.login === 'xing ming' ? 'you jian' : 'xing ming'
-      return this.login
+      if (this.loginType === 'username') {
+        this.loginType = 'email'
+      } else {
+        this.loginType = 'username'
+      }
+    }
+  },
+  computed: {
+    reversedMessage: function () {
+      return this.message.split('').reverse().join('')
     }
   }
 }
@@ -75,5 +109,12 @@ a {
 }
 .m1 {
   color: blue;
+}
+.hello {
+  margin: 0px auto;
+  margin-top: 30%;
+  text-align:center;
+  overflow: auto;
+  height: 470px;
 }
 </style>

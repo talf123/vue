@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div class="hello1">
     <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
     <ul>
@@ -96,6 +96,18 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.hello1 {
+    /* position: fixed;
+    top: 70%;
+    left: 40%;
+    bottom: 0;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding-top: 20px; */
+    margin-top:25%;
+    margin-bottom: 50px;
+    margin-left: 90px;
+}
 h1, h2 {
   font-weight: normal;
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div class="ho">
     <h1>{{ msg }}</h1>
     <div v-html="ma"></div>
     <button v-on:click='click'>按钮事件</button>
@@ -116,24 +116,20 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
-  font-weight: normal;
+.ho{
+  /* overflow:auto;
+  position: fixed;
+  top: 30%;
+  left: 40%;
+  bottom: 10%;
+  z-index: 1; */
+  width: 400px;
+  height: 390px;
+  overflow: auto;
+  text-align:center;
+  margin:200px auto 0px auto;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-.m1 {
-  color: blue;
-}
-.m2{
-  color:crimson;
+.ho>ol>li{
+  list-style-type:none;
 }
 </style>
